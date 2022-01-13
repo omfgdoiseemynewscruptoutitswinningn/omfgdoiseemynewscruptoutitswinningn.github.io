@@ -1,3 +1,4 @@
+
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
@@ -137,23 +138,24 @@ fs = false
 
     local Gui_Name = Titlee or "Unknown"
 	fs = false
-    pcall(function() Robloxloadinggui:Destroy() end);
+    pcall(function() VestraLib:Destroy() end);
 
     pcall(function() 
-    for i,v in pairs(nig) do
+    for i,v in pairs(VestraLib_Con) do
     v:Disconnect()
     end
     end);
     
-getgenv()["Robloxloadinggui"] = utility:Create("ScreenGui", {
-    Name = "Robloxloadinggui",
+getgenv()["VestraLib"] = utility:Create("ScreenGui", {
+    Name = "Vestra_Lib",
     Parent = game.CoreGui
 })
-getgenv()["nig"] = {}
+
+getgenv()["VestraLib_Con"] = {}
 
 local MainFrame = utility:Create("Frame", {
     Name = "MainFrame",
-    Parent = Robloxloadinggui,
+    Parent = VestraLib,
     BackgroundColor3 = themes.Background,
     BorderSizePixel = 0,
     Position = UDim2.new(0.323, 0,0.273, 0),
@@ -906,8 +908,8 @@ MainFrame.Settings_Tab.Tittle_S.close.MouseButton1Click:Connect(function()
 end)
 
 MainFrame.Settings_Tab.Des.MouseButton1Click:Connect(function()
-    pcall(function() Robloxloadinggui:Destroy() end);
-    pcall(function() for i,v in pairs(nig) do v:Disconnect() end end);
+    pcall(function() VestraLib:Destroy() end);
+    pcall(function() for i,v in pairs(VestraLib_Con) do v:Disconnect() end end);
 end)
 
 local input_con
@@ -945,13 +947,13 @@ end)
 input_con = game:GetService("UserInputService").InputBegan:Connect(function(i, GPE)
     if KEY and i.KeyCode == KEY and not GPE and not connection then
         if not changing then
-            pcall(function() Robloxloadinggui.Enabled = not Robloxloadinggui.Enabled end);
+            pcall(function() VestraLib.Enabled = not VestraLib.Enabled end);
         end
     end
 end)
 
-table.insert(nig, input_con)
-table.insert(nig, connection)
+table.insert(VestraLib_Con, input_con)
+table.insert(VestraLib_Con, connection)
 
 MainFrame.TopBar.Min_Btn.MouseButton1Click:Connect(function()
   if MainFrame.Size == UDim2.new(0, 582, 0, 398) then
@@ -1006,7 +1008,7 @@ if type(fdgdfgfd) ~= "string" then
 end
 
 local hahahahahha_liibib = {}
-    for i,v in pairs(Robloxloadinggui.MainFrame.Categories:GetDescendants()) do
+    for i,v in pairs(VestraLib.MainFrame.Categories:GetDescendants()) do
         if v:IsA("ImageButton") or v:IsA("TextButton") or v:IsA("ImageLabel") then
         if string.find(v.Name, "_Button") or string.find(v.Name, "_Toggle") or string.find(v.Name, "_ColourPicker") or string.find(v.Name, "_Slider") or string.find(v.Name, "_Dropdown") or string.find(v.Name, "_Keybind") or string.find(v.Name, "_TextBox") or string.find(v.Name, "_Label") then
          
@@ -1014,7 +1016,7 @@ local hahahahahha_liibib = {}
 
 --print(string.lower((v.Name):split('_')[1]))
 
-for _,ss in pairs(Robloxloadinggui.MainFrame.Categories:GetChildren()) do
+for _,ss in pairs(VestraLib.MainFrame.Categories:GetChildren()) do
 if ss.Visible == true then
     ss.Visible = false
 end
@@ -1033,7 +1035,7 @@ pcall(function()
 end)
 
 
-Robloxloadinggui.MainFrame.Categories[v.Parent.Name].Visible = true
+VestraLib.MainFrame.Categories[v.Parent.Name].Visible = true
                         end
         end
     end
@@ -1210,7 +1212,7 @@ function makey_vestra:label(lbl_title)
         Position = UDim2.new(0.0212014131, 0, 0.0316091962, 0),
         Size = UDim2.new(0, 546, 0, 35),
         Image = "rbxassetid://3570695787",
-        ImageColor3 = Color3.fromRGB(27, 27, 27),
+        ImageColor3 = Color3.fromRGB(41, 41, 41),
         ScaleType = Enum.ScaleType.Slice,
         SliceCenter = Rect.new(100, 100, 100, 100),
         SliceScale = 0.080
@@ -2260,8 +2262,8 @@ inputconnection = game:GetService("UserInputService").InputBegan:Connect(functio
     end
 end)
 
-table.insert(nig, inputconnection)
-table.insert(nig, connection)
+table.insert(VestraLib_Con, inputconnection)
+table.insert(VestraLib_Con, connection)
 
 MainFrame.Categories[Tab_Name].CanvasSize = UDim2.new(0, 0, 0, MainFrame.Categories[Tab_Name].UIListLayout.AbsoluteContentSize.Y)
 
@@ -2358,6 +2360,5 @@ local themess = {
 	DarkContrast = Color3.fromRGB(27, 27, 27),  
 	TextColor = Color3.fromRGB(255, 255, 255)
 }
+
 return library
-
-
